@@ -1,10 +1,14 @@
+const modelBaseUrl = window.location.pathname.includes('/face/')
+  ? '/face/models'
+  : 'models';
+
 // Load the models
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('/face/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('/face/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('/face/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('/face/models')
-  ]).then(startVideo);
+  faceapi.nets.tinyFaceDetector.loadFromUri(modelBaseUrl),
+  faceapi.nets.faceLandmark68Net.loadFromUri(modelBaseUrl),
+  faceapi.nets.faceRecognitionNet.loadFromUri(modelBaseUrl),
+  faceapi.nets.faceExpressionNet.loadFromUri(modelBaseUrl)
+]).then(startVideo);
   
   // Start the video stream
   function startVideo() {
