@@ -52,7 +52,6 @@ function drawBlurredVideo(video, displaySize) {
   }
   
   function updateOverlay(color) {
-    console.log('Updating overlay color to:', color);
     const overlay = document.getElementById('overlay');
     overlay.style.setProperty('--border-color', color);
   }

@@ -102,10 +102,8 @@ function checkFaceInsideCircle(boundingBox, displaySize) {
 
   if (isInsideHorizontal && isInsideVertical) {
     overlay.style.borderColor = 'green';
-    console.log('Face is inside the circle');
   } else {
     overlay.style.borderColor = 'red';
-    console.log('Face is outside the circle');
   }
 }
 
@@ -117,7 +115,7 @@ function detectBlink(leftEye, rightEye) {
 
   if (leftEAR < 0.25 && rightEAR < 0.25) {
     blinkCount++;
-    console.log('Blink Detected');
+    // console.log('Blink Detected');
   }
 }
 
@@ -154,7 +152,7 @@ function detectHeadMovement(noseTip, displaySize, ctx) {
       updateDots(noseTip, displaySize);
       drawCircleWithDots(ctx, displaySize);
       if (filledDots.every(filled => filled)) {
-        console.log('Face Rounded Movement Detected');
+        // console.log('Face Rounded Movement Detected');
       }
     }
   }

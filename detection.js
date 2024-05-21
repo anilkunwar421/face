@@ -13,15 +13,9 @@ function checkFaceInsideCircle(boundingBox, displaySize) {
     const isInsideHorizontal = (distX + boundingBox.width / 2 <= radiusX);
     const isInsideVertical = (distY + boundingBox.height / 2 <= radiusY);
   
-    console.log('distX:', distX, 'distY:', distY);
-    console.log('radiusX:', radiusX, 'radiusY:', radiusY);
-    console.log('isInsideHorizontal:', isInsideHorizontal, 'isInsideVertical:', isInsideVertical);
-  
     if (isInsideHorizontal && isInsideVertical) {
-      console.log('Face is inside the circle');
       updateOverlay('green');
     } else {
-      console.log('Face is outside the circle');
       updateOverlay('red');
     }
   }
@@ -48,7 +42,7 @@ function checkFaceInsideCircle(boundingBox, displaySize) {
     const rightEAR = getEAR(rightEye);
   
     if (leftEAR < 0.25 && rightEAR < 0.25) {
-      console.log('Blink Detected');
+    //   console.log('Blink Detected');
     }
   }
   
