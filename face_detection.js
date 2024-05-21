@@ -1,9 +1,9 @@
 // Load the models
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('/models')
+    faceapi.nets.tinyFaceDetector.loadFromUri('/face/models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('/face/models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('/face/models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('/face/models')
   ]).then(startVideo);
   
   // Start the video stream
