@@ -14,8 +14,8 @@ function startVideo() {
   navigator.mediaDevices.getUserMedia({
     video: {
       facingMode: 'user',
-    //   width: { ideal: 960 },
-    //   height: { ideal: 1280 }
+      width: { ideal: 300 },
+      height: { ideal: 400 }
     }
   })
     .then(stream => {

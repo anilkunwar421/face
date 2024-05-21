@@ -13,7 +13,7 @@ function drawBlurredVideo(video, displaySize) {
   
     const centerX = displaySize.width / 2;
     const centerY = displaySize.height / 2;
-    const radiusX = displaySize.width * 0.25;
+    const radiusX = displaySize.width * 0.35;
     const radiusY = displaySize.height * 0.35;
   
     clearCtx.save();
@@ -30,7 +30,7 @@ function drawBlurredVideo(video, displaySize) {
     const blurCtx = blurCanvas.getContext('2d');
     const centerX = displaySize.width / 2;
     const centerY = displaySize.height / 2;
-    const radiusX = displaySize.width * 0.25;
+    const radiusX = displaySize.width * 0.35;
     const radiusY = displaySize.height * 0.35;
   
     // Draw the blurred video first
