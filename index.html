@@ -13,18 +13,60 @@
       height: 100vh;
       background: #000;
     }
-    video, canvas {
-      width: auto;
+    #container {
+      position: relative;
+      width: 640px;
+      height: 480px;
+    }
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      max-width: 100%;
-      max-height: 100%;
       object-fit: cover;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    #overlay {
+      --border-color: red;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+    #overlay::before {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 70%;
+      border: 5px solid var(--border-color);
+      border-radius: 50%;
+      box-sizing: border-box;
     }
   </style>
 </head>
 <body>
-  <video id="video" autoplay muted playsinline></video>
+  <div id="container">
+    <video id="video" autoplay muted playsinline></video>
+    <canvas id="blur-canvas"></canvas>
+    <canvas id="clear-canvas"></canvas>
+    <div id="overlay"></div>
+  </div>
   <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
-  <script defer src="https://anilkunwar421.github.io/face/face_detection.js"></script>
+  <script defer src="video.js"></script>
+  <script defer src="drawing.js"></script>
+  <script defer src="detection.js"></script>
 </body>
 </html>

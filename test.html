@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button onclick="detectBrowser()">Detect Browser</button>
+    <script>
+        function detectBrowser() {
+    var userAgent = navigator.userAgent.toLowerCase();
+    var browserName = "Other";
+
+    if (userAgent.includes("edg")) {
+        browserName = "Edge";
+    } else if (userAgent.includes("opr") || userAgent.includes("opera")) {
+        browserName = "Opera";
+    } else if (userAgent.includes("chrome") && userAgent.includes("samsung")) {
+        browserName = "Samsung Internet";
+    } else if (userAgent.includes("chrome")) {
+        browserName = "Chrome";
+    } else if (userAgent.includes("safari")) {
+        browserName = "Safari";
+    } else if (userAgent.includes("firefox")) {
+        browserName = "Firefox";
+    } else if (userAgent.includes("msie") || userAgent.includes("trident")) {
+        browserName = "Internet Explorer";
+    }
+
+    return browserName;
+}
+
+alert("You are using " + detectBrowser());
+
+    </script>
+</body>
+</html>
