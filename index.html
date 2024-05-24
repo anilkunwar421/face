@@ -5,56 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      margin: 0;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* height: 100vh; */
-      background: #000;
-    }
-    #container {
-      position: relative;
-      width: 300px; /* Change to control size */
-      height: 400px; /* 4:3 aspect ratio */
-    }
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-    #overlay {
-      --border-color: red;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      pointer-events: none;
-    }
-    #overlay::before {
-      content: '';
-      display: block;
-      width: 70%;
-      height: 70%;
-      border: 5px solid var(--border-color);
-      border-radius: 50%;
-      box-sizing: border-box;
-    }
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+}
+
+#container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+video, canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#overlay {
+  --border-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate(0%, -16.5%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+#overlay::before {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 50%;
+  border: 5px solid var(--border-color);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
   </style>
 </head>
 <body>
