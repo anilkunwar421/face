@@ -28,18 +28,9 @@ function startVideo() {
 
 function adjustContainer(width, height) {
   const container = document.getElementById('container');
-  const aspectRatio = width / height;
-  const windowAspectRatio = window.innerWidth / window.innerHeight;
-
-  if (aspectRatio > windowAspectRatio) {
-    container.style.width = '100vw';
-    container.style.height = `${100 / aspectRatio}vw`;
-  } else {
-    container.style.width = `${100 * aspectRatio}vh`;
-    container.style.height = '100vh';
-  }
+  container.style.width = '100vw';
+  container.style.height = '100vh';
 }
-
 
 function onPlay() {
   const video = document.getElementById('video');
