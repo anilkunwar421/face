@@ -16,6 +16,8 @@ function startVideo() {
   navigator.mediaDevices.getUserMedia({
     video: {
       facingMode: 'user',
+      width: innerWidth,
+      height: height
     }
   })
     .then(stream => {
