@@ -22,17 +22,24 @@ function startVideo() {
       video.addEventListener('loadedmetadata', () => {
         adjustContainer(video.videoWidth, video.videoHeight);
       });
-      console.log(video);
-      video.addEventListener('play', onPlay);
     })
     .catch(err => console.error('Error accessing camera: ', err));
 }
 
 function adjustContainer(width, height) {
   const container = document.getElementById('container');
-  container.style.width = '100vw';
-  container.style.height = '100vh';
+  const aspectRatio = width / height;
+  const windowAspectRatio = window.innerWidth / window.innerHeight;
+
+  if (aspectRatio > windowAspectRatio) {
+    container.style.width = '100vw';
+    container.style.height = `${100 / aspectRatio}vw`;
+  } else {
+    container.style.width = `${100 * aspectRatio}vh`;
+    container.style.height = '100vh';
+  }
 }
+
 
 function onPlay() {
   const video = document.getElementById('video');
