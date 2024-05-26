@@ -23,7 +23,6 @@ video, canvas {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   object-fit: cover;
 }
 
@@ -64,7 +63,7 @@ video, canvas {
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: absolute;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
@@ -91,9 +90,11 @@ video, canvas {
   <script defer src="detection.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const video = document.getElementById('video');
+      const video = document.getElementById('container');
       let innerWidth = window.innerWidth;
       let height = (4 / 3) * innerWidth;
+      video.style.width = innerWidth + 'px';
+      video.style.height = height + 'px';
       const buttonContainer = document.getElementById('buttons');
       buttonContainer.style.top = height + 'px';
     });

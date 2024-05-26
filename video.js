@@ -11,13 +11,9 @@ Promise.all([
 ]).then(startVideo);
 
 function startVideo() {
-  let innerWidth = window.innerWidth;
-      let height = (4 / 3) * innerWidth;
   navigator.mediaDevices.getUserMedia({
     video: {
       facingMode: 'user',
-      width: innerWidth,
-      height: height
     }
   })
     .then(stream => {
