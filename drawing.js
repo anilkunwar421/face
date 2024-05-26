@@ -10,11 +10,12 @@ function drawBlurredVideo(video, displaySize) {
     const clearCanvas = document.getElementById('clear-canvas');
     const clearCtx = clearCanvas.getContext('2d');
     clearCtx.clearRect(0, 0, displaySize.width, displaySize.height);
-  
-    const centerX = displaySize.width / 2;
-    const centerY = displaySize.height / 3;
-    const radiusX = displaySize.width * 0.25;
-    const radiusY = displaySize.height * 0.25;
+    let innerWidth = window.innerWidth;
+    let height = (4 / 3) * innerWidth;
+    const centerX = innerWidth / 2;
+    const centerY = height / 3;
+    const radiusX = innerWidth * 0.35;
+    const radiusY = height * 0.35;
   
     clearCtx.save();
     clearCtx.beginPath();
