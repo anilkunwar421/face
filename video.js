@@ -22,6 +22,7 @@ function startVideo() {
       video.addEventListener('loadedmetadata', () => {
         adjustContainer(video.videoWidth, video.videoHeight);
       });
+      video.addEventListener('play', onPlay);
     })
     .catch(err => console.error('Error accessing camera: ', err));
 }
@@ -39,16 +40,12 @@ function onPlay() {
   const clearCanvas = document.getElementById('clear-canvas');
   faceapi.matchDimensions(blurCanvas, displaySize);
   faceapi.matchDimensions(clearCanvas, displaySize);
-
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
 
     drawBlurredVideo(video, displaySize);
     drawClearVideo(video, displaySize);
-
-    faceapi.draw.drawDetections(clearCanvas, resizedDetections);
-    faceapi.draw.drawFaceLandmarks(clearCanvas, resizedDetections);
 
     if (resizedDetections.length > 0) {
       const landmarks = resizedDetections[0].landmarks;
@@ -58,8 +55,10 @@ function onPlay() {
 
       detectHeadMovement(noseTip, displaySize);
       checkFaceInsideCircle(boundingBox, displaySize);
+      // updateOverlay('green');
     } else {
-      updateOverlay('red');
+      // updateOverlay('red');
     }
   }, 100);
 }
+

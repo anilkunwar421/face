@@ -1,128 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Face Detection and Verification</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 100vw;
-        background: #000;
-      }
+<head>
+  <title>Face Detection and Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      background: #000;
+    }
 
-      #container {
-        position: relative;
-        height: 100vh;
-        width: 100vw;
-        overflow: hidden; /* Ensure no overflow */
-      }
+    #container {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden; /* Ensure no overflow */
+    }
 
-      video,
-      canvas {
-        transform: scaleX(-1);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scaleX(-1);
-        object-fit: cover; /* Ensure the video fills the container */
-        width: 100%;
-        height: 100%;
-      }
+    video,
+    canvas {
+      transform: scaleX(-1);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scaleX(-1);
+      object-fit: cover; /* Ensure the video fills the container */
+      width: 100%;
+      height: 100%;
+    }
 
-      #overlay {
-        --border-color: red;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        transform: translateX(-50%);
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        pointer-events: none;
-      }
+    #btnContainer {
+      position: fixed;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Center vertically as well */
+      bottom: 0;
+      padding: 10px 0px;
+      background: rgb(19, 19, 19);
+    }
 
-      #overlay::before {
-        content: "";
-        display: block;
-        width: 80%;
-        height: 50%;
-        border: 5px solid var(--border-color);
-        border-radius: 50%;
-        box-sizing: border-box;
-      }
+    #take {
+      background-color: #c7c7c7;
+      color: white;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s, transform 0.2s;
+      user-select: none; /* Disable text selection */
+      outline: none; /* Remove focus outline */
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+      -webkit-user-drag: none; /* Disable drag selection on webkit browsers */
+    }
 
-      #btnContainer {
-        position: fixed;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center; /* Center vertically as well */
-        bottom: 0;
-        padding: 10px 0px;
-        background: rgb(19, 19, 19);
-      }
+    #take:active {
+      background-color: #ffffff;
+      transform: scale(0.95);
+    }
 
-      #take {
-        background-color: #c7c7c7;
-        color: white;
-        width: 60px;
-        height: 60px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: background-color 0.3s, transform 0.2s;
-        user-select: none; /* Disable text selection */
-        outline: none; /* Remove focus outline */
-        -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
-        -webkit-user-drag: none; /* Disable drag selection on webkit browsers */
-      }
-
-      #take:active {
-        background-color: #ffffff;
-        transform: scale(0.95);
-      }
-
-      #take:focus {
-        outline: none; /* Ensure no outline on focus */
-      }
-    </style>
-  </head>
-  <body>
-    <div id="container">
-      <div>
-        <video id="video" autoplay muted playsinline></video>
-        <canvas id="blur-canvas"></canvas>
-        <canvas id="clear-canvas"></canvas>
-        <div id="overlay"></div>
-      </div>
-      <div id="btnContainer">
-        <button id="take"></button>
-      </div>
+    #take:focus {
+      outline: none; /* Ensure no outline on focus */
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div>
+      <video id="video" autoplay muted playsinline></video>
+      <canvas id="blur-canvas"></canvas>
+      <canvas id="clear-canvas"></canvas>
     </div>
-    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
-    <script defer src="video.js"></script>
-    <script defer src="drawing.js"></script>
-    <script defer src="detection.js"></script>
-    <script>
-      window.addEventListener("load", function () {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+    <div id="btnContainer">
+      <button id="take"></button>
+    </div>
+  </div>
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script defer src="video.js"></script>
+  <script defer src="drawing.js"></script>
+  <script defer src="detection.js"></script>
+  <script>
+    window.addEventListener("load", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>

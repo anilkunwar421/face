@@ -1,24 +1,28 @@
 function checkFaceInsideCircle(boundingBox, displaySize) {
-    const centerX = displaySize.width / 2;
-    const centerY = displaySize.height / 2;
-    const radiusX = (displaySize.width * 0.25);
-    const radiusY = (displaySize.height * 0.35);
-  
-    const boxCenterX = boundingBox.x + boundingBox.width / 2;
-    const boxCenterY = boundingBox.y + boundingBox.height / 2;
-  
-    const distX = Math.abs(boxCenterX - centerX);
-    const distY = Math.abs(boxCenterY - centerY);
-  
-    const isInsideHorizontal = (distX + boundingBox.width / 2 <= radiusX);
-    const isInsideVertical = (distY + boundingBox.height / 2 <= radiusY);
-  
-    if (isInsideHorizontal && isInsideVertical) {
-      updateOverlay('green');
-    } else {
-      updateOverlay('red');
-    }
+  const centerX = displaySize.width / 2;
+  const centerY = displaySize.height / 2 - (displaySize.height * 0.1); // Move the ellipse slightly upward
+
+  const radiusX = Math.min(displaySize.width * 0.3, displaySize.width / 2); // 30% of width or max half width
+  const radiusY = Math.min(displaySize.height * 0.4, displaySize.height / 2) * 0.6; // 40% of height or max half height, scaled by 0.6
+
+  const boxCenterX = boundingBox.x + boundingBox.width / 2;
+  const boxCenterY = boundingBox.y + boundingBox.height / 2;
+
+  const distX = Math.abs(boxCenterX - centerX);
+  const distY = Math.abs(boxCenterY - centerY);
+
+  const isInsideHorizontal = (distX <= radiusX);
+  const isInsideVertical = (distY <= radiusY);
+
+  if (isInsideHorizontal && isInsideVertical) {
+    // Face is inside the ellipse
+    updateEllipseBorderColor(displaySize,'green');
+  } else {
+    // Face is outside the ellipse
+    updateEllipseBorderColor(displaySize,'red');
   }
+}
+
   
   
   
