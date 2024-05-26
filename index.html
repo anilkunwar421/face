@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Face Detection and Verification</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background: #000;
-}
+  <head>
+    <title>Face Detection and Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background: #000;
+        transform: scale(1);
+        transform-origin: top left;
+      }
 
-#container {
-  position: relative;
-}
+      #container {
+        position: relative;
+      }
 
-video, canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-}
+      video,
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+      }
 
-#overlay {
-  --border-color: red;
-  position: absolute;
-  top: 0;
-  left: 40%;
-  width: 100%;
-  height: 100%;
-  transform: translateX(-40%);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align items at the start vertically */
-  pointer-events: none;
-}
+      #overlay {
+        --border-color: red;
+        position: absolute;
+        top: 0;
+        left: 40%;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-40%);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Align items at the start vertically */
+        pointer-events: none;
+      }
 
-
-#overlay::before {
-  content: '';
-  display: block;
-  width: 80%;
-  height: 50%;
-  border: 5px solid var(--border-color);
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-#buttons {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-}
-#take{
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: absolute;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-  </style>
-</head>
-<body>
+      #overlay::before {
+        content: "";
+        display: block;
+        width: 80%;
+        height: 50%;
+        border: 5px solid var(--border-color);
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+      #buttons {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+      }
+      #take {
+        background-color: #4caf50;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: absolute;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
     <div id="container">
       <div>
         <video id="video" autoplay muted playsinline></video>
@@ -84,20 +86,20 @@ video, canvas {
         <button id="take">Take Photo</button>
       </div>
     </div>
-  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
-  <script defer src="video.js"></script>
-  <script defer src="drawing.js"></script>
-  <script defer src="detection.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const video = document.getElementById('container');
-      let innerWidth = window.innerWidth;
-      let height = (4 / 3) * innerWidth;
-      video.style.width = innerWidth + 'px';
-      video.style.height = height + 'px';
-      const buttonContainer = document.getElementById('buttons');
-      buttonContainer.style.top = height + 'px';
-    });
-  </script>
-</body>
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="video.js"></script>
+    <script defer src="drawing.js"></script>
+    <script defer src="detection.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById("container");
+        let innerWidth = window.innerWidth;
+        let height = (4 / 3) * innerWidth;
+        video.style.width = innerWidth + "px";
+        video.style.height = height + "px";
+        const buttonContainer = document.getElementById("buttons");
+        buttonContainer.style.top = height + "px";
+      });
+    </script>
+  </body>
 </html>
